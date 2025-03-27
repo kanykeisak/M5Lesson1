@@ -9,13 +9,15 @@ import com.example.m5lesson1.domain.networkusecase.GetTextUseCase
 import com.example.m5lesson1.domain.usecases.DecrementUseCase
 import com.example.m5lesson1.domain.usecases.GetCountUseCase
 import com.example.m5lesson1.domain.usecases.IncrementUseCase
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class CounterViewModel(
     private val incrementUseCase: IncrementUseCase,
     private val decrementUseCase: DecrementUseCase,
     private val getCountUseCase: GetCountUseCase,
-    private val getTextUseCase: GetTextUseCase
+    private val getTextUseCase: GetTextUseCase,
+    private val dispatcher: CoroutineDispatcher
 ): ViewModel() {
 
     private val _translation = MutableLiveData<String>()
@@ -25,7 +27,7 @@ class CounterViewModel(
     val counter : LiveData<CounterEntity> = _counter
 
     fun translateText(apiKey:String,text: String, targetLang: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             try {
                 val translatedText = getTextUseCase.execute(apiKey, text, targetLang)
                 _translation.value = translatedText

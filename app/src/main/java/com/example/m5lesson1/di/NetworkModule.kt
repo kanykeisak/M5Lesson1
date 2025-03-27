@@ -5,6 +5,7 @@ import com.example.m5lesson1.data.datasource.network.ApiService
 import com.example.m5lesson1.data.repository.ApiRepositoryImpl
 import com.example.m5lesson1.domain.repository.ApiRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -22,6 +23,11 @@ val networkModule = module {
     single { provideRetrofit(okHttpClient = get(), jsonConverter = get()) }
     single { provideApiService(retrofit = get()) }
     single <ApiRepository>{ ApiRepositoryImpl(apiService = get()) }
+
+    single { Dispatchers.IO }
+    single { Dispatchers.Main }
+    single { Dispatchers.Default }
+    single { Dispatchers.Unconfined }
 
 }
 
