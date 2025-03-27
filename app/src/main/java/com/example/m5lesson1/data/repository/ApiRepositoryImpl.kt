@@ -1,6 +1,7 @@
 package com.example.m5lesson1.data.repository
 
 import com.example.m5lesson1.data.datasource.network.ApiService
+import com.example.m5lesson1.domain.repository.ApiRepository
 
 class ApiRepositoryImpl(private val apiService: ApiService) : ApiRepository {
     override suspend fun translateText(apiKey: String, text: String, targetLang: String): String {

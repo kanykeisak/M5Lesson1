@@ -1,6 +1,6 @@
 package com.example.m5lesson1.di
 
-import com.example.m5lesson1.BuildConfig
+
 import com.example.m5lesson1.data.datasource.network.ApiService
 import com.example.m5lesson1.data.repository.ApiRepositoryImpl
 import com.example.m5lesson1.domain.repository.ApiRepository
@@ -22,7 +22,6 @@ val networkModule = module {
     single { provideRetrofit(okHttpClient = get(), jsonConverter = get()) }
     single { provideApiService(retrofit = get()) }
     single <ApiRepository>{ ApiRepositoryImpl(apiService = get()) }
-    //    single { ApiService()}
 
 }
 
