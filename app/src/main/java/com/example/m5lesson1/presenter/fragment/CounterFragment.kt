@@ -29,16 +29,16 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.counter.observe(viewLifecycleOwner) { counter ->
-            binding.tvCount.text = counter.count.toString()
+        binding.button.setOnClickListener {
+            val text = binding.edText.text.toString()
+            val apiKey = "7d6454ad-5149-4c51-b2f9-615b091e98da:fx"
+            if (text.isNotEmpty()) {
+                viewModel.translateText(apiKey, text,"ru")
+            }
         }
 
-        binding.btnIncrement.setOnClickListener {
-            viewModel.increment()
-        }
-
-        binding.btnDecrement.setOnClickListener {
-            viewModel.decrement()
+        viewModel.translation.observe(viewLifecycleOwner) { translation ->
+            binding.text.text = translation
         }
     }
 

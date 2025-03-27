@@ -5,6 +5,9 @@ plugins {
     //KSP must be declared at the bottom of hilt
     // Ksp plugin
     id("com.google.devtools.ksp")
+
+    // Plugin for serialization
+    kotlin("plugin.serialization") version "2.1.10"
 }
 
 android {
@@ -23,11 +26,15 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String", "BASE_URL", "\"https://api-free.deepl.com/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api-free.deepl.com/\"")
         }
     }
     compileOptions {
@@ -39,6 +46,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -63,4 +71,10 @@ dependencies {
     implementation (libs.androidx.navigation.ui.ktx)
 
     implementation(libs.koin.android)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 }

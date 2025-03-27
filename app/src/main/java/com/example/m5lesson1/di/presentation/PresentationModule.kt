@@ -10,6 +10,8 @@ val presentationModule  = module {
         CounterViewModel(
             incrementUseCase = get(),
             decrementUseCase = get(),
-            getCountUseCase = get())
+            getCountUseCase = get(),
+            getTextUseCase = get(),
+            )
     }
 }

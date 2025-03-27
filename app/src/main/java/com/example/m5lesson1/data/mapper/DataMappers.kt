@@ -10,10 +10,3 @@ fun CounterDto.toDomain(): CounterEntity{
         operationType = OperationType.fromString(this.operationType)
     )
 }
-
-fun CounterEntity.toDto() : CounterDto{
-    return CounterDto(
-        count = this.count,
-        operationType = this.operationType.value
-    )
-}

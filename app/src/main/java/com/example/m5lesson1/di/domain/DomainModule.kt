@@ -10,4 +10,6 @@ val domainModule = module {
     factory { IncrementUseCase(get()) }
     factory { DecrementUseCase(get()) }
     factory { GetCountUseCase(get()) }
+
+    single { GetTextUseCase(apiRepository = get()) }
 }
