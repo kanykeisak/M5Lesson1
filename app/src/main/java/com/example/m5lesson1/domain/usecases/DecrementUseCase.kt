@@ -5,5 +5,5 @@ import com.example.m5lesson1.domain.repository.CounterRepository
 class DecrementUseCase(
     private val counterRepository: CounterRepository,
 ) {
-    fun decrement() = counterRepository.decrement()
+    operator fun invoke() = counterRepository.decrement()
 }

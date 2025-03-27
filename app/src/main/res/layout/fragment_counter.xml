@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".presentation.fragment.CounterFragment">
+    tools:context=".presenter.fragment.CounterFragment">
 
     <TextView
         android:id="@+id/tvCount"

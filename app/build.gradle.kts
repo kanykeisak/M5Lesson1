@@ -2,9 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    // Hilt plugin
-    id("com.google.dagger.hilt.android")
-
     //KSP must be declared at the bottom of hilt
     // Ksp plugin
     id("com.google.devtools.ksp")
@@ -60,11 +57,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    // Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
 
     // Fragments
     implementation(libs.androidx.fragment.ktx)
-    implementation ("androidx.navigation:navigation-ui-ktx:2.8.8")
+    implementation (libs.androidx.navigation.ui.ktx)
+
+    implementation(libs.koin.android)
 }

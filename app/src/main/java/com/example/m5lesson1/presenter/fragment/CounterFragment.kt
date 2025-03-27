@@ -1,4 +1,4 @@
-package com.example.m5lesson1.presentation.fragment
+package com.example.m5lesson1.presenter.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,16 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.m5lesson1.databinding.FragmentCounterBinding
-import com.example.m5lesson1.presentation.viewmodel.CounterViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.m5lesson1.presenter.viewmodel.CounterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class CounterFragment : Fragment() {
 
     private var _binding: FragmentCounterBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: CounterViewModel by viewModels()
+    private val koinViewModel by viewModel<CounterViewModel> ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
